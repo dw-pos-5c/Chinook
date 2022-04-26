@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ChinookDbLib;
+using ChinookMVVM;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,33 @@ namespace Chinook
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow() => InitializeComponent();
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            InitializeComponent();
+            var db = new ChinookContext();
+            var vm = new ChinookViewModel().Init(db);
+            this.DataContext = vm;
+            FilleTV();
+        }
+
+        private void FilleTV()
+        {
+            var root = new TreeViewItem
+            {
+                Header = "Test",
+            };
+            tvMain.Items.Add(root);
+
+            for(int i = 0; i < 10; i++)
+            {
+                root.Items.Add(new TreeViewItem { Header = new { Test = "Bled" } });
+            }
+        }
+
+        private void UserControl1_UserControlChanged(object sender, UserControlLib.SliderEventArgs e)
+        {
+            Console.WriteLine(e.Value);
         }
     }
 }

@@ -1,10 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MVVM.Tools" Version="1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ChinookDbLib\ChinookDbLib.csproj" />
+    <ProjectReference Include="..\ChinookMVVM\ChinookMVVM.csproj" />
+    <ProjectReference Include="..\UserControlLib\UserControlLib.csproj" />
+  </ItemGroup>
 
 </Project>

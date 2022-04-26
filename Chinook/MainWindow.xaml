@@ -3,10 +3,24 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:ChinookMVVM;assembly=ChinookMVVM"
+        xmlns:uc="clr-namespace:UserControlLib;assembly=UserControlLib"
         xmlns:local="clr-namespace:Chinook"
         mc:Ignorable="d"
+        Loaded="Window_Loaded"
         Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <vm:ChinookViewModel/>
+    </Window.DataContext>
     <Grid>
-
+        <ListBox ItemsSource="{Binding List,Mode=OneWay}"></ListBox>
+        <TreeView Name="tvMain"></TreeView>
+        <StackPanel>
+            <RadioButton GroupName="test"></RadioButton>
+            <RadioButton GroupName="test"></RadioButton>
+            <RadioButton GroupName="test"></RadioButton>
+            <RadioButton GroupName="test"></RadioButton>
+        </StackPanel>
+        <uc:UserControl1 UserControlChanged="UserControl1_UserControlChanged" Value="5.0" Margin="127,173,247,173"></uc:UserControl1>
     </Grid>
 </Window>
