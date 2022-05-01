@@ -8,19 +8,32 @@
         xmlns:local="clr-namespace:Chinook"
         mc:Ignorable="d"
         Loaded="Window_Loaded"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="1080" Width="1920 ">
     <Window.DataContext>
         <vm:ChinookViewModel/>
     </Window.DataContext>
     <Grid>
         <ListBox ItemsSource="{Binding List,Mode=OneWay}"></ListBox>
         <TreeView Name="tvMain"></TreeView>
-        <StackPanel>
-            <RadioButton GroupName="test"></RadioButton>
-            <RadioButton GroupName="test"></RadioButton>
-            <RadioButton GroupName="test"></RadioButton>
-            <RadioButton GroupName="test"></RadioButton>
-        </StackPanel>
-        <uc:UserControl1 UserControlChanged="UserControl1_UserControlChanged" Value="5.0" Margin="127,173,247,173"></uc:UserControl1>
+        <uc:UserControl1 UserControlChanged="UserControl1_UserControlChanged" Value="5.0" Margin="161,10,1174,961"></uc:UserControl1>
+        <DataGrid ItemsSource="{Binding Customers}" AutoGenerateColumns="False" Name="datagrid" Margin="0,501,1174,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Bled" Binding="{Binding Address}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <ListBox Name="lstStrings" Margin="1376,57,91,687">
+            
+        </ListBox>
+        <ListBox ItemsSource="{Binding Customers}" Name="lstCustomers" Margin="906,57,623,687">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListBoxItem_PreviewMouseLeftButtonDown"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+        <Label Content="Drop strings here" Margin="906,483,885,524" AllowDrop="True"></Label>
+        <Label Content="Drop Customers to this textbox" Margin="1376,483,238,524" DragOver="Label_DragOver" AllowDrop="True"></Label>
+        <TextBox Name="tbTest" Text="TextBox" Margin="1376,512,185,471"></TextBox>
     </Grid>
 </Window>

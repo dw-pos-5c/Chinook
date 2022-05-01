@@ -17,10 +17,16 @@ namespace ChinookMVVM
         public ChinookViewModel Init(ChinookContext db)
         {
             this.db = db;
+            Customers = db.Customers.ToList();
             return this;
         }
 
-        private ObservableCollection<string> list;
+        private ObservableCollection<string> list = new ObservableCollection<string>()
+        {
+            "Test",
+            "Value",
+            "Bled"
+        };
 
         public ObservableCollection<string> List
         {
@@ -30,6 +36,19 @@ namespace ChinookMVVM
                 RaisePropertyChangedEvent(nameof(List));
             }
         }
+
+        private List<Customer> customers;
+
+        public List<Customer> Customers
+        {
+            get { return customers; }
+            set
+            {
+                customers = value;
+                RaisePropertyChangedEvent(nameof(List));
+            }
+        }
+
 
     }
 }

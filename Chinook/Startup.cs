@@ -19,6 +19,7 @@ namespace Chinook
             services.AddDbContext<ChinookContext>(x => x.UseSqlServer(connectionString));
             services.AddSingleton<MainWindow>();
             services.AddSingleton<ChinookViewModel>();
+            services.AddTransient<AnotherWindow>();
         }
     }
 }
