@@ -22,12 +22,19 @@ namespace Chinook
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow() => InitializeComponent();
+        private readonly ChinookContext db;
+        private readonly ChinookViewModel vm;
+
+        public MainWindow(ChinookContext db, ChinookViewModel vm)
+        {
+            InitializeComponent();
+            this.db = db;
+            this.vm = vm;
+        }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var db = new ChinookContext();
-            var vm = new ChinookViewModel().Init(db);
+            vm.Init(db); 
             this.DataContext = vm;
             FilleTV();
         }

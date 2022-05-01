@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,8 @@ namespace UserControlLib
     /// <summary>
     /// Interaction logic for UserControl1.xaml
     /// </summary>
+    
+    [DefaultEvent(nameof(UserControlChanged))]
     public partial class UserControl1 : UserControl
     {
         public UserControl1()
